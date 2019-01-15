@@ -1,0 +1,16 @@
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\KozmetickiClassLibrary.dll.config
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\KozmetickiClassLibrary.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\KozmetickiClassLibrary.pdb
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\EntityFramework.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\Google.Protobuf.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\MySql.Data.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\EntityFramework.xml
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\bin\Debug\Google.Protobuf.xml
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\obj\Debug\KozmetickiClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\obj\Debug\KozmetickiClassLibrary.csproj.CopyComplete
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\obj\Debug\KozmetickiClassLibrary.dll
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\obj\Debug\KozmetickiClassLibrary.pdb
+C:\Users\Korisnik\Documents\FER\OO\kozmetickisalon\KozmetickiClassLibrary\obj\Debug\KozmetickiClassLibrary.csprojAssemblyReference.cache

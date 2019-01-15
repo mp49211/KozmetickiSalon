@@ -1,0 +1,1417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="kozmetickisalonModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adresa">
+          <Key>
+            <PropertyRef Name="idAdresa" />
+          </Key>
+          <Property Name="idAdresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivadrese" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idGrad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="artikl">
+          <Key>
+            <PropertyRef Name="idArtikl" />
+          </Key>
+          <Property Name="idArtikl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cijena" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idDobavljac" Type="int" Nullable="false" />
+          <Property Name="idProizvodac" Type="int" Nullable="false" />
+          <Property Name="idKategorija" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="artiklsalon">
+          <Key>
+            <PropertyRef Name="idArtiklSalon" />
+          </Key>
+          <Property Name="idArtiklSalon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="idArtikl" Type="int" Nullable="false" />
+          <Property Name="idSalon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dobavljac">
+          <Key>
+            <PropertyRef Name="iddobavljac" />
+          </Key>
+          <Property Name="iddobavljac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivDobavljaca" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="oib" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="kontakt" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idadresa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grad">
+          <Key>
+            <PropertyRef Name="idGrad" />
+          </Key>
+          <Property Name="idGrad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivGrada" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="pbr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kategorija">
+          <Key>
+            <PropertyRef Name="idKategorija" />
+          </Key>
+          <Property Name="idKategorija" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivKategorija" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nabava">
+          <Key>
+            <PropertyRef Name="idnabava" />
+          </Key>
+          <Property Name="idnabava" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idsalon" Type="int" Nullable="false" />
+          <Property Name="iddobavljac" Type="int" Nullable="false" />
+          <Property Name="datum" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ukupnaCijena" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nabavaartikl">
+          <Key>
+            <PropertyRef Name="idNabavaArtikl" />
+          </Key>
+          <Property Name="idNabavaArtikl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idNabava" Type="int" Nullable="false" />
+          <Property Name="idArtikl" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="narudzba">
+          <Key>
+            <PropertyRef Name="idNarudzba" />
+          </Key>
+          <Property Name="idNarudzba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="klijent" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="kontakt" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idZaposlenik" Type="int" Nullable="false" />
+          <Property Name="idSalon" Type="int" Nullable="false" />
+          <Property Name="vrijeme" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="idUsluga" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proizvodac">
+          <Key>
+            <PropertyRef Name="idProizvodac" />
+          </Key>
+          <Property Name="idProizvodac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivproizvodaca" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salon">
+          <Key>
+            <PropertyRef Name="idSalon" />
+          </Key>
+          <Property Name="idSalon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="oib" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="idAdresa" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="pwd" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salonusluga">
+          <Key>
+            <PropertyRef Name="idSalonUsluga" />
+          </Key>
+          <Property Name="idSalonUsluga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSalon" Type="int" Nullable="false" />
+          <Property Name="idUsluga" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="smjena">
+          <Key>
+            <PropertyRef Name="idSmjena" />
+          </Key>
+          <Property Name="idSmjena" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="smjena" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="timeStart" Type="time" Precision="5" Nullable="false" />
+          <Property Name="timeEnd" Type="time" Precision="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usluga">
+          <Key>
+            <PropertyRef Name="idusluga" />
+          </Key>
+          <Property Name="idusluga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cijena" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="trajanje" Type="int" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="idKategorija" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zaposlenik">
+          <Key>
+            <PropertyRef Name="idZaposlenik" />
+          </Key>
+          <Property Name="idZaposlenik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="oib" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="idAdresa" Type="int" Nullable="false" />
+          <Property Name="idSalon" Type="int" Nullable="false" />
+          <Property Name="idSmjena" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zaposlenikusluga">
+          <Key>
+            <PropertyRef Name="idZaposlenikUsluga" />
+          </Key>
+          <Property Name="idZaposlenikUsluga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idZaposlenik" Type="int" Nullable="false" />
+          <Property Name="idUsluga" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FKAdresaDobavljac">
+          <End Role="adresa" Type="Self.adresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dobavljac" Type="Self.dobavljac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresa">
+              <PropertyRef Name="idAdresa" />
+            </Principal>
+            <Dependent Role="dobavljac">
+              <PropertyRef Name="idadresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkAdresaGrad">
+          <End Role="grad" Type="Self.grad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="adresa" Type="Self.adresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grad">
+              <PropertyRef Name="idGrad" />
+            </Principal>
+            <Dependent Role="adresa">
+              <PropertyRef Name="idGrad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArtikl">
+          <End Role="artikl" Type="Self.artikl" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="artiklsalon" Type="Self.artiklsalon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artikl">
+              <PropertyRef Name="idArtikl" />
+            </Principal>
+            <Dependent Role="artiklsalon">
+              <PropertyRef Name="idArtikl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArtiklDobavljac">
+          <End Role="dobavljac" Type="Self.dobavljac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="artikl" Type="Self.artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dobavljac">
+              <PropertyRef Name="iddobavljac" />
+            </Principal>
+            <Dependent Role="artikl">
+              <PropertyRef Name="idDobavljac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArtiklKategorija">
+          <End Role="kategorija" Type="Self.kategorija" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="artikl" Type="Self.artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorija">
+              <PropertyRef Name="idKategorija" />
+            </Principal>
+            <Dependent Role="artikl">
+              <PropertyRef Name="idKategorija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArtiklProizvodac">
+          <End Role="proizvodac" Type="Self.proizvodac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="artikl" Type="Self.artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proizvodac">
+              <PropertyRef Name="idProizvodac" />
+            </Principal>
+            <Dependent Role="artikl">
+              <PropertyRef Name="idProizvodac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKDobavljacNabava">
+          <End Role="dobavljac" Type="Self.dobavljac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="nabava" Type="Self.nabava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dobavljac">
+              <PropertyRef Name="iddobavljac" />
+            </Principal>
+            <Dependent Role="nabava">
+              <PropertyRef Name="iddobavljac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNabavaArtiklArtikl">
+          <End Role="artikl" Type="Self.artikl" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="nabavaartikl" Type="Self.nabavaartikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artikl">
+              <PropertyRef Name="idArtikl" />
+            </Principal>
+            <Dependent Role="nabavaartikl">
+              <PropertyRef Name="idArtikl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNabavaArtiklNabava">
+          <End Role="nabava" Type="Self.nabava" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="nabavaartikl" Type="Self.nabavaartikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nabava">
+              <PropertyRef Name="idnabava" />
+            </Principal>
+            <Dependent Role="nabavaartikl">
+              <PropertyRef Name="idNabava" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkNarudzbaSalon">
+          <End Role="salon" Type="Self.salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="narudzba" Type="Self.narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="narudzba">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkNarudzbaZaposlenik">
+          <End Role="zaposlenik" Type="Self.zaposlenik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="narudzba" Type="Self.narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zaposlenik">
+              <PropertyRef Name="idZaposlenik" />
+            </Principal>
+            <Dependent Role="narudzba">
+              <PropertyRef Name="idZaposlenik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkSalon">
+          <End Role="salon" Type="Self.salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="artiklsalon" Type="Self.artiklsalon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="artiklsalon">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkSalonAdresa">
+          <End Role="adresa" Type="Self.adresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="salon" Type="Self.salon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresa">
+              <PropertyRef Name="idAdresa" />
+            </Principal>
+            <Dependent Role="salon">
+              <PropertyRef Name="idAdresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSalonNabava">
+          <End Role="salon" Type="Self.salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="nabava" Type="Self.nabava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="nabava">
+              <PropertyRef Name="idsalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSalonUslugaSalon">
+          <End Role="salon" Type="Self.salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="salonusluga" Type="Self.salonusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="salonusluga">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSalonUslugaUsluga">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="salonusluga" Type="Self.salonusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="idusluga" />
+            </Principal>
+            <Dependent Role="salonusluga">
+              <PropertyRef Name="idUsluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkUNarudzbaUsluga">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="narudzba" Type="Self.narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="idusluga" />
+            </Principal>
+            <Dependent Role="narudzba">
+              <PropertyRef Name="idUsluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUslugaKategorija">
+          <End Role="kategorija" Type="Self.kategorija" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usluga" Type="Self.usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorija">
+              <PropertyRef Name="idKategorija" />
+            </Principal>
+            <Dependent Role="usluga">
+              <PropertyRef Name="idKategorija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikAdresa">
+          <End Role="adresa" Type="Self.adresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="zaposlenik" Type="Self.zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresa">
+              <PropertyRef Name="idAdresa" />
+            </Principal>
+            <Dependent Role="zaposlenik">
+              <PropertyRef Name="idAdresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikSalon">
+          <End Role="salon" Type="Self.salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="zaposlenik" Type="Self.zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="zaposlenik">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikSmjena">
+          <End Role="smjena" Type="Self.smjena" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="zaposlenik" Type="Self.zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="smjena">
+              <PropertyRef Name="idSmjena" />
+            </Principal>
+            <Dependent Role="zaposlenik">
+              <PropertyRef Name="idSmjena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikuslugaUsluga">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="zaposlenikusluga" Type="Self.zaposlenikusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="idusluga" />
+            </Principal>
+            <Dependent Role="zaposlenikusluga">
+              <PropertyRef Name="idUsluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikuslugaZaposlenik">
+          <End Role="zaposlenik" Type="Self.zaposlenik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="zaposlenikusluga" Type="Self.zaposlenikusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zaposlenik">
+              <PropertyRef Name="idZaposlenik" />
+            </Principal>
+            <Dependent Role="zaposlenikusluga">
+              <PropertyRef Name="idZaposlenik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kozmetickisalonModelStoreContainer">
+          <EntitySet Name="adresa" EntityType="Self.adresa" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="artikl" EntityType="Self.artikl" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="artiklsalon" EntityType="Self.artiklsalon" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="dobavljac" EntityType="Self.dobavljac" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="grad" EntityType="Self.grad" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="kategorija" EntityType="Self.kategorija" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="nabava" EntityType="Self.nabava" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="nabavaartikl" EntityType="Self.nabavaartikl" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="narudzba" EntityType="Self.narudzba" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="proizvodac" EntityType="Self.proizvodac" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="salon" EntityType="Self.salon" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="salonusluga" EntityType="Self.salonusluga" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="smjena" EntityType="Self.smjena" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="usluga" EntityType="Self.usluga" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="zaposlenik" EntityType="Self.zaposlenik" Schema="kozmetickisalon" store:Type="Tables" />
+          <EntitySet Name="zaposlenikusluga" EntityType="Self.zaposlenikusluga" Schema="kozmetickisalon" store:Type="Tables" />
+          <AssociationSet Name="FKAdresaDobavljac" Association="Self.FKAdresaDobavljac">
+            <End Role="adresa" EntitySet="adresa" />
+            <End Role="dobavljac" EntitySet="dobavljac" />
+          </AssociationSet>
+          <AssociationSet Name="fkAdresaGrad" Association="Self.fkAdresaGrad">
+            <End Role="grad" EntitySet="grad" />
+            <End Role="adresa" EntitySet="adresa" />
+          </AssociationSet>
+          <AssociationSet Name="fkArtikl" Association="Self.fkArtikl">
+            <End Role="artikl" EntitySet="artikl" />
+            <End Role="artiklsalon" EntitySet="artiklsalon" />
+          </AssociationSet>
+          <AssociationSet Name="fkArtiklDobavljac" Association="Self.fkArtiklDobavljac">
+            <End Role="dobavljac" EntitySet="dobavljac" />
+            <End Role="artikl" EntitySet="artikl" />
+          </AssociationSet>
+          <AssociationSet Name="fkArtiklKategorija" Association="Self.fkArtiklKategorija">
+            <End Role="kategorija" EntitySet="kategorija" />
+            <End Role="artikl" EntitySet="artikl" />
+          </AssociationSet>
+          <AssociationSet Name="fkArtiklProizvodac" Association="Self.fkArtiklProizvodac">
+            <End Role="proizvodac" EntitySet="proizvodac" />
+            <End Role="artikl" EntitySet="artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FKDobavljacNabava" Association="Self.FKDobavljacNabava">
+            <End Role="dobavljac" EntitySet="dobavljac" />
+            <End Role="nabava" EntitySet="nabava" />
+          </AssociationSet>
+          <AssociationSet Name="FKNabavaArtiklArtikl" Association="Self.FKNabavaArtiklArtikl">
+            <End Role="artikl" EntitySet="artikl" />
+            <End Role="nabavaartikl" EntitySet="nabavaartikl" />
+          </AssociationSet>
+          <AssociationSet Name="FKNabavaArtiklNabava" Association="Self.FKNabavaArtiklNabava">
+            <End Role="nabava" EntitySet="nabava" />
+            <End Role="nabavaartikl" EntitySet="nabavaartikl" />
+          </AssociationSet>
+          <AssociationSet Name="fkNarudzbaSalon" Association="Self.fkNarudzbaSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="narudzba" EntitySet="narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="fkNarudzbaZaposlenik" Association="Self.fkNarudzbaZaposlenik">
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+            <End Role="narudzba" EntitySet="narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="fkSalon" Association="Self.fkSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="artiklsalon" EntitySet="artiklsalon" />
+          </AssociationSet>
+          <AssociationSet Name="fkSalonAdresa" Association="Self.fkSalonAdresa">
+            <End Role="adresa" EntitySet="adresa" />
+            <End Role="salon" EntitySet="salon" />
+          </AssociationSet>
+          <AssociationSet Name="FKSalonNabava" Association="Self.FKSalonNabava">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="nabava" EntitySet="nabava" />
+          </AssociationSet>
+          <AssociationSet Name="FKSalonUslugaSalon" Association="Self.FKSalonUslugaSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="salonusluga" EntitySet="salonusluga" />
+          </AssociationSet>
+          <AssociationSet Name="FKSalonUslugaUsluga" Association="Self.FKSalonUslugaUsluga">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="salonusluga" EntitySet="salonusluga" />
+          </AssociationSet>
+          <AssociationSet Name="fkUNarudzbaUsluga" Association="Self.fkUNarudzbaUsluga">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="narudzba" EntitySet="narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="FKUslugaKategorija" Association="Self.FKUslugaKategorija">
+            <End Role="kategorija" EntitySet="kategorija" />
+            <End Role="usluga" EntitySet="usluga" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikAdresa" Association="Self.fkZaposlenikAdresa">
+            <End Role="adresa" EntitySet="adresa" />
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikSalon" Association="Self.fkZaposlenikSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikSmjena" Association="Self.fkZaposlenikSmjena">
+            <End Role="smjena" EntitySet="smjena" />
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikuslugaUsluga" Association="Self.fkZaposlenikuslugaUsluga">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="zaposlenikusluga" EntitySet="zaposlenikusluga" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikuslugaZaposlenik" Association="Self.fkZaposlenikuslugaZaposlenik">
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+            <End Role="zaposlenikusluga" EntitySet="zaposlenikusluga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kozmetickisalonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="kozmetickisalonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="artikl" EntityType="kozmetickisalonModel.artikl" />
+          <EntitySet Name="artiklsalon" EntityType="kozmetickisalonModel.artiklsalon" />
+          <EntitySet Name="kategorija" EntityType="kozmetickisalonModel.kategorija" />
+          <EntitySet Name="nabava" EntityType="kozmetickisalonModel.nabava" />
+          <EntitySet Name="nabavaartikl" EntityType="kozmetickisalonModel.nabavaartikl" />
+          <EntitySet Name="proizvodac" EntityType="kozmetickisalonModel.proizvodac" />
+          <EntitySet Name="salon" EntityType="kozmetickisalonModel.salon" />
+          <EntitySet Name="salonusluga" EntityType="kozmetickisalonModel.salonusluga" />
+          <EntitySet Name="smjena" EntityType="kozmetickisalonModel.smjena" />
+          <EntitySet Name="usluga" EntityType="kozmetickisalonModel.usluga" />
+          <EntitySet Name="zaposlenik" EntityType="kozmetickisalonModel.zaposlenik" />
+          <EntitySet Name="zaposlenikusluga" EntityType="kozmetickisalonModel.zaposlenikusluga" />
+          <AssociationSet Name="fkArtikl" Association="kozmetickisalonModel.fkArtikl">
+            <End Role="artikl" EntitySet="artikl" />
+            <End Role="artiklsalon" EntitySet="artiklsalon" />
+          </AssociationSet>
+          <AssociationSet Name="fkArtiklKategorija" Association="kozmetickisalonModel.fkArtiklKategorija">
+            <End Role="kategorija" EntitySet="kategorija" />
+            <End Role="artikl" EntitySet="artikl" />
+          </AssociationSet>
+          <AssociationSet Name="fkArtiklProizvodac" Association="kozmetickisalonModel.fkArtiklProizvodac">
+            <End Role="proizvodac" EntitySet="proizvodac" />
+            <End Role="artikl" EntitySet="artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FKNabavaArtiklArtikl" Association="kozmetickisalonModel.FKNabavaArtiklArtikl">
+            <End Role="artikl" EntitySet="artikl" />
+            <End Role="nabavaartikl" EntitySet="nabavaartikl" />
+          </AssociationSet>
+          <AssociationSet Name="fkSalon" Association="kozmetickisalonModel.fkSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="artiklsalon" EntitySet="artiklsalon" />
+          </AssociationSet>
+          <AssociationSet Name="FKUslugaKategorija" Association="kozmetickisalonModel.FKUslugaKategorija">
+            <End Role="kategorija" EntitySet="kategorija" />
+            <End Role="usluga" EntitySet="usluga" />
+          </AssociationSet>
+          <AssociationSet Name="FKNabavaArtiklNabava" Association="kozmetickisalonModel.FKNabavaArtiklNabava">
+            <End Role="nabava" EntitySet="nabava" />
+            <End Role="nabavaartikl" EntitySet="nabavaartikl" />
+          </AssociationSet>
+          <AssociationSet Name="FKSalonNabava" Association="kozmetickisalonModel.FKSalonNabava">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="nabava" EntitySet="nabava" />
+          </AssociationSet>
+          <AssociationSet Name="FKSalonUslugaSalon" Association="kozmetickisalonModel.FKSalonUslugaSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="salonusluga" EntitySet="salonusluga" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikSalon" Association="kozmetickisalonModel.fkZaposlenikSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="FKSalonUslugaUsluga" Association="kozmetickisalonModel.FKSalonUslugaUsluga">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="salonusluga" EntitySet="salonusluga" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikSmjena" Association="kozmetickisalonModel.fkZaposlenikSmjena">
+            <End Role="smjena" EntitySet="smjena" />
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikuslugaUsluga" Association="kozmetickisalonModel.fkZaposlenikuslugaUsluga">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="zaposlenikusluga" EntitySet="zaposlenikusluga" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikuslugaZaposlenik" Association="kozmetickisalonModel.fkZaposlenikuslugaZaposlenik">
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+            <End Role="zaposlenikusluga" EntitySet="zaposlenikusluga" />
+          </AssociationSet>
+          <EntitySet Name="dobavljac" EntityType="kozmetickisalonModel.dobavljac" />
+          <AssociationSet Name="fkArtiklDobavljac" Association="kozmetickisalonModel.fkArtiklDobavljac">
+            <End Role="dobavljac" EntitySet="dobavljac" />
+            <End Role="artikl" EntitySet="artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FKDobavljacNabava" Association="kozmetickisalonModel.FKDobavljacNabava">
+            <End Role="dobavljac" EntitySet="dobavljac" />
+            <End Role="nabava" EntitySet="nabava" />
+          </AssociationSet>
+          <EntitySet Name="adresa" EntityType="kozmetickisalonModel.adresa" />
+          <EntitySet Name="grad" EntityType="kozmetickisalonModel.grad" />
+          <AssociationSet Name="FKAdresaDobavljac" Association="kozmetickisalonModel.FKAdresaDobavljac">
+            <End Role="adresa" EntitySet="adresa" />
+            <End Role="dobavljac" EntitySet="dobavljac" />
+          </AssociationSet>
+          <AssociationSet Name="fkAdresaGrad" Association="kozmetickisalonModel.fkAdresaGrad">
+            <End Role="grad" EntitySet="grad" />
+            <End Role="adresa" EntitySet="adresa" />
+          </AssociationSet>
+          <AssociationSet Name="fkSalonAdresa" Association="kozmetickisalonModel.fkSalonAdresa">
+            <End Role="adresa" EntitySet="adresa" />
+            <End Role="salon" EntitySet="salon" />
+          </AssociationSet>
+          <AssociationSet Name="fkZaposlenikAdresa" Association="kozmetickisalonModel.fkZaposlenikAdresa">
+            <End Role="adresa" EntitySet="adresa" />
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+          </AssociationSet>
+          <EntitySet Name="narudzba" EntityType="kozmetickisalonModel.narudzba" />
+          <AssociationSet Name="fkNarudzbaSalon" Association="kozmetickisalonModel.fkNarudzbaSalon">
+            <End Role="salon" EntitySet="salon" />
+            <End Role="narudzba" EntitySet="narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="fkNarudzbaZaposlenik" Association="kozmetickisalonModel.fkNarudzbaZaposlenik">
+            <End Role="zaposlenik" EntitySet="zaposlenik" />
+            <End Role="narudzba" EntitySet="narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="fkUNarudzbaUsluga" Association="kozmetickisalonModel.fkUNarudzbaUsluga">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="narudzba" EntitySet="narudzba" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="artikl">
+          <Key>
+            <PropertyRef Name="idArtikl" />
+          </Key>
+          <Property Name="idArtikl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cijena" Type="Decimal" Nullable="false" />
+          <Property Name="idDobavljac" Type="Int32" Nullable="false" />
+          <Property Name="idProizvodac" Type="Int32" Nullable="false" />
+          <Property Name="idKategorija" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="artiklsalon" Relationship="kozmetickisalonModel.fkArtikl" FromRole="artikl" ToRole="artiklsalon" />
+          <NavigationProperty Name="kategorija" Relationship="kozmetickisalonModel.fkArtiklKategorija" FromRole="artikl" ToRole="kategorija" />
+          <NavigationProperty Name="proizvodac" Relationship="kozmetickisalonModel.fkArtiklProizvodac" FromRole="artikl" ToRole="proizvodac" />
+          <NavigationProperty Name="nabavaartikl" Relationship="kozmetickisalonModel.FKNabavaArtiklArtikl" FromRole="artikl" ToRole="nabavaartikl" />
+          <NavigationProperty Name="dobavljac" Relationship="kozmetickisalonModel.fkArtiklDobavljac" FromRole="artikl" ToRole="dobavljac" />
+        </EntityType>
+        <EntityType Name="artiklsalon">
+          <Key>
+            <PropertyRef Name="idArtiklSalon" />
+          </Key>
+          <Property Name="idArtiklSalon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <Property Name="idArtikl" Type="Int32" Nullable="false" />
+          <Property Name="idSalon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="artikl" Relationship="kozmetickisalonModel.fkArtikl" FromRole="artiklsalon" ToRole="artikl" />
+          <NavigationProperty Name="salon" Relationship="kozmetickisalonModel.fkSalon" FromRole="artiklsalon" ToRole="salon" />
+        </EntityType>
+        <EntityType Name="kategorija">
+          <Key>
+            <PropertyRef Name="idKategorija" />
+          </Key>
+          <Property Name="idKategorija" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivKategorija" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="artikl" Relationship="kozmetickisalonModel.fkArtiklKategorija" FromRole="kategorija" ToRole="artikl" />
+          <NavigationProperty Name="usluga" Relationship="kozmetickisalonModel.FKUslugaKategorija" FromRole="kategorija" ToRole="usluga" />
+        </EntityType>
+        <EntityType Name="nabava">
+          <Key>
+            <PropertyRef Name="idnabava" />
+          </Key>
+          <Property Name="idnabava" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idsalon" Type="Int32" Nullable="false" />
+          <Property Name="iddobavljac" Type="Int32" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" />
+          <Property Name="ukupnaCijena" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="nabavaartikl" Relationship="kozmetickisalonModel.FKNabavaArtiklNabava" FromRole="nabava" ToRole="nabavaartikl" />
+          <NavigationProperty Name="salon" Relationship="kozmetickisalonModel.FKSalonNabava" FromRole="nabava" ToRole="salon" />
+          <NavigationProperty Name="dobavljac" Relationship="kozmetickisalonModel.FKDobavljacNabava" FromRole="nabava" ToRole="dobavljac" />
+        </EntityType>
+        <EntityType Name="nabavaartikl">
+          <Key>
+            <PropertyRef Name="idNabavaArtikl" />
+          </Key>
+          <Property Name="idNabavaArtikl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idNabava" Type="Int32" Nullable="false" />
+          <Property Name="idArtikl" Type="Int32" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="artikl" Relationship="kozmetickisalonModel.FKNabavaArtiklArtikl" FromRole="nabavaartikl" ToRole="artikl" />
+          <NavigationProperty Name="nabava" Relationship="kozmetickisalonModel.FKNabavaArtiklNabava" FromRole="nabavaartikl" ToRole="nabava" />
+        </EntityType>
+        <EntityType Name="proizvodac">
+          <Key>
+            <PropertyRef Name="idProizvodac" />
+          </Key>
+          <Property Name="idProizvodac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivproizvodaca" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="artikl" Relationship="kozmetickisalonModel.fkArtiklProizvodac" FromRole="proizvodac" ToRole="artikl" />
+        </EntityType>
+        <EntityType Name="salon">
+          <Key>
+            <PropertyRef Name="idSalon" />
+          </Key>
+          <Property Name="idSalon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="oib" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="idAdresa" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="artiklsalon" Relationship="kozmetickisalonModel.fkSalon" FromRole="salon" ToRole="artiklsalon" />
+          <NavigationProperty Name="nabava" Relationship="kozmetickisalonModel.FKSalonNabava" FromRole="salon" ToRole="nabava" />
+          <NavigationProperty Name="salonusluga" Relationship="kozmetickisalonModel.FKSalonUslugaSalon" FromRole="salon" ToRole="salonusluga" />
+          <NavigationProperty Name="zaposlenik" Relationship="kozmetickisalonModel.fkZaposlenikSalon" FromRole="salon" ToRole="zaposlenik" />
+          <NavigationProperty Name="adresa" Relationship="kozmetickisalonModel.fkSalonAdresa" FromRole="salon" ToRole="adresa" />
+          <NavigationProperty Name="narudzba" Relationship="kozmetickisalonModel.fkNarudzbaSalon" FromRole="salon" ToRole="narudzba" />
+        </EntityType>
+        <EntityType Name="salonusluga">
+          <Key>
+            <PropertyRef Name="idSalonUsluga" />
+          </Key>
+          <Property Name="idSalonUsluga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSalon" Type="Int32" Nullable="false" />
+          <Property Name="idUsluga" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="salon" Relationship="kozmetickisalonModel.FKSalonUslugaSalon" FromRole="salonusluga" ToRole="salon" />
+          <NavigationProperty Name="usluga" Relationship="kozmetickisalonModel.FKSalonUslugaUsluga" FromRole="salonusluga" ToRole="usluga" />
+        </EntityType>
+        <EntityType Name="smjena">
+          <Key>
+            <PropertyRef Name="idSmjena" />
+          </Key>
+          <Property Name="idSmjena" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="smjena1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="timeStart" Type="Time" Nullable="false" />
+          <Property Name="timeEnd" Type="Time" Nullable="false" />
+          <NavigationProperty Name="zaposlenik" Relationship="kozmetickisalonModel.fkZaposlenikSmjena" FromRole="smjena" ToRole="zaposlenik" />
+        </EntityType>
+        <EntityType Name="usluga">
+          <Key>
+            <PropertyRef Name="idusluga" />
+          </Key>
+          <Property Name="idusluga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cijena" Type="Decimal" Nullable="false" />
+          <Property Name="trajanje" Type="Int32" Nullable="false" />
+          <Property Name="opis" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idKategorija" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="kategorija" Relationship="kozmetickisalonModel.FKUslugaKategorija" FromRole="usluga" ToRole="kategorija" />
+          <NavigationProperty Name="salonusluga" Relationship="kozmetickisalonModel.FKSalonUslugaUsluga" FromRole="usluga" ToRole="salonusluga" />
+          <NavigationProperty Name="zaposlenikusluga" Relationship="kozmetickisalonModel.fkZaposlenikuslugaUsluga" FromRole="usluga" ToRole="zaposlenikusluga" />
+          <NavigationProperty Name="narudzba" Relationship="kozmetickisalonModel.fkUNarudzbaUsluga" FromRole="usluga" ToRole="narudzba" />
+        </EntityType>
+        <EntityType Name="zaposlenik">
+          <Key>
+            <PropertyRef Name="idZaposlenik" />
+          </Key>
+          <Property Name="idZaposlenik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="prezime" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="oib" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="idAdresa" Type="Int32" Nullable="false" />
+          <Property Name="idSalon" Type="Int32" Nullable="false" />
+          <Property Name="idSmjena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="salon" Relationship="kozmetickisalonModel.fkZaposlenikSalon" FromRole="zaposlenik" ToRole="salon" />
+          <NavigationProperty Name="smjena" Relationship="kozmetickisalonModel.fkZaposlenikSmjena" FromRole="zaposlenik" ToRole="smjena" />
+          <NavigationProperty Name="zaposlenikusluga" Relationship="kozmetickisalonModel.fkZaposlenikuslugaZaposlenik" FromRole="zaposlenik" ToRole="zaposlenikusluga" />
+          <NavigationProperty Name="adresa" Relationship="kozmetickisalonModel.fkZaposlenikAdresa" FromRole="zaposlenik" ToRole="adresa" />
+          <NavigationProperty Name="narudzba" Relationship="kozmetickisalonModel.fkNarudzbaZaposlenik" FromRole="zaposlenik" ToRole="narudzba" />
+        </EntityType>
+        <EntityType Name="zaposlenikusluga">
+          <Key>
+            <PropertyRef Name="idZaposlenikUsluga" />
+          </Key>
+          <Property Name="idZaposlenikUsluga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idZaposlenik" Type="Int32" Nullable="false" />
+          <Property Name="idUsluga" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usluga" Relationship="kozmetickisalonModel.fkZaposlenikuslugaUsluga" FromRole="zaposlenikusluga" ToRole="usluga" />
+          <NavigationProperty Name="zaposlenik" Relationship="kozmetickisalonModel.fkZaposlenikuslugaZaposlenik" FromRole="zaposlenikusluga" ToRole="zaposlenik" />
+        </EntityType>
+        <Association Name="fkArtikl">
+          <End Type="kozmetickisalonModel.artikl" Role="artikl" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.artiklsalon" Role="artiklsalon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artikl">
+              <PropertyRef Name="idArtikl" />
+            </Principal>
+            <Dependent Role="artiklsalon">
+              <PropertyRef Name="idArtikl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArtiklKategorija">
+          <End Type="kozmetickisalonModel.kategorija" Role="kategorija" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.artikl" Role="artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorija">
+              <PropertyRef Name="idKategorija" />
+            </Principal>
+            <Dependent Role="artikl">
+              <PropertyRef Name="idKategorija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkArtiklProizvodac">
+          <End Type="kozmetickisalonModel.proizvodac" Role="proizvodac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.artikl" Role="artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proizvodac">
+              <PropertyRef Name="idProizvodac" />
+            </Principal>
+            <Dependent Role="artikl">
+              <PropertyRef Name="idProizvodac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNabavaArtiklArtikl">
+          <End Type="kozmetickisalonModel.artikl" Role="artikl" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.nabavaartikl" Role="nabavaartikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artikl">
+              <PropertyRef Name="idArtikl" />
+            </Principal>
+            <Dependent Role="nabavaartikl">
+              <PropertyRef Name="idArtikl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkSalon">
+          <End Type="kozmetickisalonModel.salon" Role="salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.artiklsalon" Role="artiklsalon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="artiklsalon">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUslugaKategorija">
+          <End Type="kozmetickisalonModel.kategorija" Role="kategorija" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.usluga" Role="usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorija">
+              <PropertyRef Name="idKategorija" />
+            </Principal>
+            <Dependent Role="usluga">
+              <PropertyRef Name="idKategorija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNabavaArtiklNabava">
+          <End Type="kozmetickisalonModel.nabava" Role="nabava" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.nabavaartikl" Role="nabavaartikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nabava">
+              <PropertyRef Name="idnabava" />
+            </Principal>
+            <Dependent Role="nabavaartikl">
+              <PropertyRef Name="idNabava" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSalonNabava">
+          <End Type="kozmetickisalonModel.salon" Role="salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.nabava" Role="nabava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="nabava">
+              <PropertyRef Name="idsalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSalonUslugaSalon">
+          <End Type="kozmetickisalonModel.salon" Role="salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.salonusluga" Role="salonusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="salonusluga">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikSalon">
+          <End Type="kozmetickisalonModel.salon" Role="salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.zaposlenik" Role="zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="zaposlenik">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSalonUslugaUsluga">
+          <End Type="kozmetickisalonModel.usluga" Role="usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.salonusluga" Role="salonusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="idusluga" />
+            </Principal>
+            <Dependent Role="salonusluga">
+              <PropertyRef Name="idUsluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikSmjena">
+          <End Type="kozmetickisalonModel.smjena" Role="smjena" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.zaposlenik" Role="zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="smjena">
+              <PropertyRef Name="idSmjena" />
+            </Principal>
+            <Dependent Role="zaposlenik">
+              <PropertyRef Name="idSmjena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikuslugaUsluga">
+          <End Type="kozmetickisalonModel.usluga" Role="usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.zaposlenikusluga" Role="zaposlenikusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="idusluga" />
+            </Principal>
+            <Dependent Role="zaposlenikusluga">
+              <PropertyRef Name="idUsluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikuslugaZaposlenik">
+          <End Type="kozmetickisalonModel.zaposlenik" Role="zaposlenik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.zaposlenikusluga" Role="zaposlenikusluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zaposlenik">
+              <PropertyRef Name="idZaposlenik" />
+            </Principal>
+            <Dependent Role="zaposlenikusluga">
+              <PropertyRef Name="idZaposlenik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dobavljac">
+          <Key>
+            <PropertyRef Name="iddobavljac" />
+          </Key>
+          <Property Name="iddobavljac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivDobavljaca" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="oib" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="kontakt" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idadresa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="artikl" Relationship="kozmetickisalonModel.fkArtiklDobavljac" FromRole="dobavljac" ToRole="artikl" />
+          <NavigationProperty Name="nabava" Relationship="kozmetickisalonModel.FKDobavljacNabava" FromRole="dobavljac" ToRole="nabava" />
+          <NavigationProperty Name="adresa" Relationship="kozmetickisalonModel.FKAdresaDobavljac" FromRole="dobavljac" ToRole="adresa" />
+        </EntityType>
+        <Association Name="fkArtiklDobavljac">
+          <End Type="kozmetickisalonModel.dobavljac" Role="dobavljac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.artikl" Role="artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dobavljac">
+              <PropertyRef Name="iddobavljac" />
+            </Principal>
+            <Dependent Role="artikl">
+              <PropertyRef Name="idDobavljac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKDobavljacNabava">
+          <End Type="kozmetickisalonModel.dobavljac" Role="dobavljac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.nabava" Role="nabava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dobavljac">
+              <PropertyRef Name="iddobavljac" />
+            </Principal>
+            <Dependent Role="nabava">
+              <PropertyRef Name="iddobavljac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="adresa">
+          <Key>
+            <PropertyRef Name="idAdresa" />
+          </Key>
+          <Property Name="idAdresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivadrese" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idGrad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="dobavljac" Relationship="kozmetickisalonModel.FKAdresaDobavljac" FromRole="adresa" ToRole="dobavljac" />
+          <NavigationProperty Name="grad" Relationship="kozmetickisalonModel.fkAdresaGrad" FromRole="adresa" ToRole="grad" />
+          <NavigationProperty Name="salon" Relationship="kozmetickisalonModel.fkSalonAdresa" FromRole="adresa" ToRole="salon" />
+          <NavigationProperty Name="zaposlenik" Relationship="kozmetickisalonModel.fkZaposlenikAdresa" FromRole="adresa" ToRole="zaposlenik" />
+        </EntityType>
+        <EntityType Name="grad">
+          <Key>
+            <PropertyRef Name="idGrad" />
+          </Key>
+          <Property Name="idGrad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivGrada" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pbr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="adresa" Relationship="kozmetickisalonModel.fkAdresaGrad" FromRole="grad" ToRole="adresa" />
+        </EntityType>
+        <Association Name="FKAdresaDobavljac">
+          <End Type="kozmetickisalonModel.adresa" Role="adresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.dobavljac" Role="dobavljac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresa">
+              <PropertyRef Name="idAdresa" />
+            </Principal>
+            <Dependent Role="dobavljac">
+              <PropertyRef Name="idadresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkAdresaGrad">
+          <End Type="kozmetickisalonModel.grad" Role="grad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.adresa" Role="adresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grad">
+              <PropertyRef Name="idGrad" />
+            </Principal>
+            <Dependent Role="adresa">
+              <PropertyRef Name="idGrad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkSalonAdresa">
+          <End Type="kozmetickisalonModel.adresa" Role="adresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.salon" Role="salon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresa">
+              <PropertyRef Name="idAdresa" />
+            </Principal>
+            <Dependent Role="salon">
+              <PropertyRef Name="idAdresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkZaposlenikAdresa">
+          <End Type="kozmetickisalonModel.adresa" Role="adresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.zaposlenik" Role="zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresa">
+              <PropertyRef Name="idAdresa" />
+            </Principal>
+            <Dependent Role="zaposlenik">
+              <PropertyRef Name="idAdresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="narudzba">
+          <Key>
+            <PropertyRef Name="idNarudzba" />
+          </Key>
+          <Property Name="idNarudzba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="klijent" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="kontakt" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idZaposlenik" Type="Int32" Nullable="false" />
+          <Property Name="idSalon" Type="Int32" Nullable="false" />
+          <Property Name="vrijeme" Type="DateTime" Nullable="false" />
+          <Property Name="idUsluga" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="salon" Relationship="kozmetickisalonModel.fkNarudzbaSalon" FromRole="narudzba" ToRole="salon" />
+          <NavigationProperty Name="zaposlenik" Relationship="kozmetickisalonModel.fkNarudzbaZaposlenik" FromRole="narudzba" ToRole="zaposlenik" />
+          <NavigationProperty Name="usluga" Relationship="kozmetickisalonModel.fkUNarudzbaUsluga" FromRole="narudzba" ToRole="usluga" />
+        </EntityType>
+        <Association Name="fkNarudzbaSalon">
+          <End Type="kozmetickisalonModel.salon" Role="salon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.narudzba" Role="narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salon">
+              <PropertyRef Name="idSalon" />
+            </Principal>
+            <Dependent Role="narudzba">
+              <PropertyRef Name="idSalon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkNarudzbaZaposlenik">
+          <End Type="kozmetickisalonModel.zaposlenik" Role="zaposlenik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.narudzba" Role="narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zaposlenik">
+              <PropertyRef Name="idZaposlenik" />
+            </Principal>
+            <Dependent Role="narudzba">
+              <PropertyRef Name="idZaposlenik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkUNarudzbaUsluga">
+          <End Type="kozmetickisalonModel.usluga" Role="usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kozmetickisalonModel.narudzba" Role="narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="idusluga" />
+            </Principal>
+            <Dependent Role="narudzba">
+              <PropertyRef Name="idUsluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kozmetickisalonModelStoreContainer" CdmEntityContainer="kozmetickisalonEntities">
+          <EntitySetMapping Name="artikl">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.artikl">
+              <MappingFragment StoreEntitySet="artikl">
+                <ScalarProperty Name="idKategorija" ColumnName="idKategorija" />
+                <ScalarProperty Name="idProizvodac" ColumnName="idProizvodac" />
+                <ScalarProperty Name="idDobavljac" ColumnName="idDobavljac" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="idArtikl" ColumnName="idArtikl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="artiklsalon">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.artiklsalon">
+              <MappingFragment StoreEntitySet="artiklsalon">
+                <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+                <ScalarProperty Name="idArtikl" ColumnName="idArtikl" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="idArtiklSalon" ColumnName="idArtiklSalon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategorija">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.kategorija">
+              <MappingFragment StoreEntitySet="kategorija">
+                <ScalarProperty Name="nazivKategorija" ColumnName="nazivKategorija" />
+                <ScalarProperty Name="idKategorija" ColumnName="idKategorija" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nabava">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.nabava">
+              <MappingFragment StoreEntitySet="nabava">
+                <ScalarProperty Name="ukupnaCijena" ColumnName="ukupnaCijena" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="iddobavljac" ColumnName="iddobavljac" />
+                <ScalarProperty Name="idsalon" ColumnName="idsalon" />
+                <ScalarProperty Name="idnabava" ColumnName="idnabava" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nabavaartikl">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.nabavaartikl">
+              <MappingFragment StoreEntitySet="nabavaartikl">
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="idArtikl" ColumnName="idArtikl" />
+                <ScalarProperty Name="idNabava" ColumnName="idNabava" />
+                <ScalarProperty Name="idNabavaArtikl" ColumnName="idNabavaArtikl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proizvodac">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.proizvodac">
+              <MappingFragment StoreEntitySet="proizvodac">
+                <ScalarProperty Name="nazivproizvodaca" ColumnName="nazivproizvodaca" />
+                <ScalarProperty Name="idProizvodac" ColumnName="idProizvodac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salon">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.salon">
+              <MappingFragment StoreEntitySet="salon">
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="idAdresa" ColumnName="idAdresa" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salonusluga">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.salonusluga">
+              <MappingFragment StoreEntitySet="salonusluga">
+                <ScalarProperty Name="idUsluga" ColumnName="idUsluga" />
+                <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+                <ScalarProperty Name="idSalonUsluga" ColumnName="idSalonUsluga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="smjena">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.smjena">
+              <MappingFragment StoreEntitySet="smjena">
+                <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+                <ScalarProperty Name="smjena1" ColumnName="smjena" />
+                <ScalarProperty Name="idSmjena" ColumnName="idSmjena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usluga">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.usluga">
+              <MappingFragment StoreEntitySet="usluga">
+                <ScalarProperty Name="idKategorija" ColumnName="idKategorija" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="trajanje" ColumnName="trajanje" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="idusluga" ColumnName="idusluga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zaposlenik">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.zaposlenik">
+              <MappingFragment StoreEntitySet="zaposlenik">
+                <ScalarProperty Name="idSmjena" ColumnName="idSmjena" />
+                <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+                <ScalarProperty Name="idAdresa" ColumnName="idAdresa" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="idZaposlenik" ColumnName="idZaposlenik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zaposlenikusluga">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.zaposlenikusluga">
+              <MappingFragment StoreEntitySet="zaposlenikusluga">
+                <ScalarProperty Name="idUsluga" ColumnName="idUsluga" />
+                <ScalarProperty Name="idZaposlenik" ColumnName="idZaposlenik" />
+                <ScalarProperty Name="idZaposlenikUsluga" ColumnName="idZaposlenikUsluga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dobavljac">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.dobavljac">
+              <MappingFragment StoreEntitySet="dobavljac">
+                <ScalarProperty Name="idadresa" ColumnName="idadresa" />
+                <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="nazivDobavljaca" ColumnName="nazivDobavljaca" />
+                <ScalarProperty Name="iddobavljac" ColumnName="iddobavljac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresa">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.adresa">
+              <MappingFragment StoreEntitySet="adresa">
+                <ScalarProperty Name="idGrad" ColumnName="idGrad" />
+                <ScalarProperty Name="nazivadrese" ColumnName="nazivadrese" />
+                <ScalarProperty Name="idAdresa" ColumnName="idAdresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grad">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.grad">
+              <MappingFragment StoreEntitySet="grad">
+                <ScalarProperty Name="pbr" ColumnName="pbr" />
+                <ScalarProperty Name="nazivGrada" ColumnName="nazivGrada" />
+                <ScalarProperty Name="idGrad" ColumnName="idGrad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="narudzba">
+            <EntityTypeMapping TypeName="kozmetickisalonModel.narudzba">
+              <MappingFragment StoreEntitySet="narudzba">
+                <ScalarProperty Name="idUsluga" ColumnName="idUsluga" />
+                <ScalarProperty Name="vrijeme" ColumnName="vrijeme" />
+                <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+                <ScalarProperty Name="idZaposlenik" ColumnName="idZaposlenik" />
+                <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+                <ScalarProperty Name="klijent" ColumnName="klijent" />
+                <ScalarProperty Name="idNarudzba" ColumnName="idNarudzba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

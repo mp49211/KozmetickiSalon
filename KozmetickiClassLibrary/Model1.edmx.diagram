@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b846917dfb894cd0885c522b3c2d2b8c" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="kozmetickisalonModel.artikl" Width="1.5" PointX="7.5" PointY="15.75" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.artiklsalon" Width="1.5" PointX="12.75" PointY="15.25" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.kategorija" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.nabava" Width="1.5" PointX="7.5" PointY="12" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.nabavaartikl" Width="1.5" PointX="9.75" PointY="16.25" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.proizvodac" Width="1.5" PointX="5.25" PointY="16.5" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.salon" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.salonusluga" Width="1.5" PointX="10.5" PointY="8.625" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.smjena" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.usluga" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.zaposlenik" Width="1.5" PointX="10.5" PointY="11.5" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.zaposlenikusluga" Width="1.5" PointX="12.75" PointY="12.125" />
+        <AssociationConnector Association="kozmetickisalonModel.fkArtikl" />
+        <AssociationConnector Association="kozmetickisalonModel.fkArtiklKategorija" />
+        <AssociationConnector Association="kozmetickisalonModel.fkArtiklProizvodac" />
+        <AssociationConnector Association="kozmetickisalonModel.FKNabavaArtiklArtikl" />
+        <AssociationConnector Association="kozmetickisalonModel.fkSalon" />
+        <AssociationConnector Association="kozmetickisalonModel.FKUslugaKategorija" />
+        <AssociationConnector Association="kozmetickisalonModel.FKNabavaArtiklNabava" />
+        <AssociationConnector Association="kozmetickisalonModel.FKSalonNabava" />
+        <AssociationConnector Association="kozmetickisalonModel.FKSalonUslugaSalon" />
+        <AssociationConnector Association="kozmetickisalonModel.fkZaposlenikSalon" />
+        <AssociationConnector Association="kozmetickisalonModel.FKSalonUslugaUsluga" />
+        <AssociationConnector Association="kozmetickisalonModel.fkZaposlenikSmjena" />
+        <AssociationConnector Association="kozmetickisalonModel.fkZaposlenikuslugaUsluga" />
+        <AssociationConnector Association="kozmetickisalonModel.fkZaposlenikuslugaZaposlenik" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.dobavljac" Width="1.5" PointX="5.25" PointY="12.875" />
+        <AssociationConnector Association="kozmetickisalonModel.fkArtiklDobavljac" />
+        <AssociationConnector Association="kozmetickisalonModel.FKDobavljacNabava" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.adresa" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.grad" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="kozmetickisalonModel.FKAdresaDobavljac" />
+        <AssociationConnector Association="kozmetickisalonModel.fkAdresaGrad" />
+        <AssociationConnector Association="kozmetickisalonModel.fkSalonAdresa" />
+        <AssociationConnector Association="kozmetickisalonModel.fkZaposlenikAdresa" />
+        <EntityTypeShape EntityType="kozmetickisalonModel.narudzba" Width="1.5" PointX="12.75" PointY="7.875" />
+        <AssociationConnector Association="kozmetickisalonModel.fkNarudzbaSalon" />
+        <AssociationConnector Association="kozmetickisalonModel.fkNarudzbaZaposlenik" />
+        <AssociationConnector Association="kozmetickisalonModel.fkUNarudzbaUsluga" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

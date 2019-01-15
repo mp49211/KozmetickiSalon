@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kozmetickisalonModelStoreContainer" CdmEntityContainer="kozmetickisalonEntities">
+    <EntitySetMapping Name="artikl">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.artikl">
+        <MappingFragment StoreEntitySet="artikl">
+          <ScalarProperty Name="idKategorija" ColumnName="idKategorija" />
+          <ScalarProperty Name="idProizvodac" ColumnName="idProizvodac" />
+          <ScalarProperty Name="idDobavljac" ColumnName="idDobavljac" />
+          <ScalarProperty Name="cijena" ColumnName="cijena" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="idArtikl" ColumnName="idArtikl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="artiklsalon">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.artiklsalon">
+        <MappingFragment StoreEntitySet="artiklsalon">
+          <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+          <ScalarProperty Name="idArtikl" ColumnName="idArtikl" />
+          <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+          <ScalarProperty Name="idArtiklSalon" ColumnName="idArtiklSalon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategorija">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.kategorija">
+        <MappingFragment StoreEntitySet="kategorija">
+          <ScalarProperty Name="nazivKategorija" ColumnName="nazivKategorija" />
+          <ScalarProperty Name="idKategorija" ColumnName="idKategorija" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nabava">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.nabava">
+        <MappingFragment StoreEntitySet="nabava">
+          <ScalarProperty Name="ukupnaCijena" ColumnName="ukupnaCijena" />
+          <ScalarProperty Name="datum" ColumnName="datum" />
+          <ScalarProperty Name="iddobavljac" ColumnName="iddobavljac" />
+          <ScalarProperty Name="idsalon" ColumnName="idsalon" />
+          <ScalarProperty Name="idnabava" ColumnName="idnabava" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nabavaartikl">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.nabavaartikl">
+        <MappingFragment StoreEntitySet="nabavaartikl">
+          <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+          <ScalarProperty Name="idArtikl" ColumnName="idArtikl" />
+          <ScalarProperty Name="idNabava" ColumnName="idNabava" />
+          <ScalarProperty Name="idNabavaArtikl" ColumnName="idNabavaArtikl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proizvodac">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.proizvodac">
+        <MappingFragment StoreEntitySet="proizvodac">
+          <ScalarProperty Name="nazivproizvodaca" ColumnName="nazivproizvodaca" />
+          <ScalarProperty Name="idProizvodac" ColumnName="idProizvodac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="salon">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.salon">
+        <MappingFragment StoreEntitySet="salon">
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="idAdresa" ColumnName="idAdresa" />
+          <ScalarProperty Name="oib" ColumnName="oib" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="salonusluga">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.salonusluga">
+        <MappingFragment StoreEntitySet="salonusluga">
+          <ScalarProperty Name="idUsluga" ColumnName="idUsluga" />
+          <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+          <ScalarProperty Name="idSalonUsluga" ColumnName="idSalonUsluga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="smjena">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.smjena">
+        <MappingFragment StoreEntitySet="smjena">
+          <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
+          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+          <ScalarProperty Name="smjena1" ColumnName="smjena" />
+          <ScalarProperty Name="idSmjena" ColumnName="idSmjena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usluga">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.usluga">
+        <MappingFragment StoreEntitySet="usluga">
+          <ScalarProperty Name="idKategorija" ColumnName="idKategorija" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="trajanje" ColumnName="trajanje" />
+          <ScalarProperty Name="cijena" ColumnName="cijena" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="idusluga" ColumnName="idusluga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zaposlenik">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.zaposlenik">
+        <MappingFragment StoreEntitySet="zaposlenik">
+          <ScalarProperty Name="idSmjena" ColumnName="idSmjena" />
+          <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+          <ScalarProperty Name="idAdresa" ColumnName="idAdresa" />
+          <ScalarProperty Name="oib" ColumnName="oib" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="idZaposlenik" ColumnName="idZaposlenik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zaposlenikusluga">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.zaposlenikusluga">
+        <MappingFragment StoreEntitySet="zaposlenikusluga">
+          <ScalarProperty Name="idUsluga" ColumnName="idUsluga" />
+          <ScalarProperty Name="idZaposlenik" ColumnName="idZaposlenik" />
+          <ScalarProperty Name="idZaposlenikUsluga" ColumnName="idZaposlenikUsluga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dobavljac">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.dobavljac">
+        <MappingFragment StoreEntitySet="dobavljac">
+          <ScalarProperty Name="idadresa" ColumnName="idadresa" />
+          <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+          <ScalarProperty Name="oib" ColumnName="oib" />
+          <ScalarProperty Name="nazivDobavljaca" ColumnName="nazivDobavljaca" />
+          <ScalarProperty Name="iddobavljac" ColumnName="iddobavljac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adresa">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.adresa">
+        <MappingFragment StoreEntitySet="adresa">
+          <ScalarProperty Name="idGrad" ColumnName="idGrad" />
+          <ScalarProperty Name="nazivadrese" ColumnName="nazivadrese" />
+          <ScalarProperty Name="idAdresa" ColumnName="idAdresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grad">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.grad">
+        <MappingFragment StoreEntitySet="grad">
+          <ScalarProperty Name="pbr" ColumnName="pbr" />
+          <ScalarProperty Name="nazivGrada" ColumnName="nazivGrada" />
+          <ScalarProperty Name="idGrad" ColumnName="idGrad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="narudzba">
+      <EntityTypeMapping TypeName="kozmetickisalonModel.narudzba">
+        <MappingFragment StoreEntitySet="narudzba">
+          <ScalarProperty Name="idUsluga" ColumnName="idUsluga" />
+          <ScalarProperty Name="vrijeme" ColumnName="vrijeme" />
+          <ScalarProperty Name="idSalon" ColumnName="idSalon" />
+          <ScalarProperty Name="idZaposlenik" ColumnName="idZaposlenik" />
+          <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+          <ScalarProperty Name="klijent" ColumnName="klijent" />
+          <ScalarProperty Name="idNarudzba" ColumnName="idNarudzba" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
